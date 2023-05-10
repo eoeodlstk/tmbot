@@ -81,7 +81,6 @@ export class Bot {
         "hangul": "https://www.hancom.com/goods/goodsList.do?ctgr_seq=31&gnb0=24&gnb1=43"
       };
 
-      let softwareKeys = ["인증", ];
       let softwareTypes = {
         "윈도우": "windows",
         "windows": "windows",
