@@ -34,6 +34,109 @@ export class Bot {
 
       this.registerSlashCommands();
     });
+    this.client.on('messageCreate', async (message) => {
+      if (message.author.bot) return;
+      let content = message.content;
+      // @ts-ignore
+      let my_name = message.guild.members.cache.find(member => member.user.username === message.author.username);
+      // @ts-ignore
+      let test = message.channel.name;
+      let test2 = message.channel.id;
+      // @ts-ignore
+      let troleadmin = message.member.roles.cache.has('684722393725665392'); // admin role
+      // @ts-ignore
+      let trolesubscriber = message.member.roles.cache.has('689661924480516251'); // Subscriber role
+      // @ts-ignore
+      let trolesuperior = message.member.roles.cache.has('685336335288107060'); // Superior role
+      // @ts-ignore
+      let trolwebadmin = message.member.roles.cache.has('769748429064503296'); // Webadmin role
+      // @ts-ignore
+      let trolesbot = message.member.roles.cache.has('684731646288855081'); // bot role
+      if (troleadmin || trolesubscriber || trolesuperior || trolwebadmin || trolesbot) return;
+      if (
+          (
+               content.includes("어떻게") || content.includes("문의")
+            || content.includes("질문") || content.includes("아시는")
+            || content.includes("오또") || content.includes("해결")
+          )
+          &&
+          (
+            content.includes("있") || content.includes("까요")
+         || content.includes("주") || content.includes("있") || content.includes("합")
+         || content.includes("하") || content.includes("할")
+          )
+      ) {
+        console.log(message.channel.id);
+        if (message.channel.id !== "737654030679015476") {
+          await message.channel.send(`${my_name} 이채널은 문의 채널이 아닙니다.\n 문의채널에 다시 남겨주세요\n<#737654030679015476> 또는 http://remiz.co.kr/bbs/board.php?bo_table=qna 에 남겨주시기 바랍니다.`);
+        }
+      }
+
+      let productLinks = {
+        "windows": "https://www.microsoft.com/ko-kr/windows/get-windows-10",
+        "office": "https://www.microsoft.com/ko-kr/microsoft-365/buy/compare-all-microsoft-365-products",
+        "adobe": "https://www.adobe.com/kr/creativecloud/plans.html",
+        "cad": "https://www.autodesk.co.kr/products",
+        "antivirus": "", // Replace with antivirus product link
+        "hangul": "https://www.hancom.com/goods/goodsList.do?ctgr_seq=31&gnb0=24&gnb1=43"
+      };
+
+      let softwareKeys = ["인증", ];
+      let softwareTypes = {
+        "윈도우": "windows",
+        "windows": "windows",
+        "Win": "windows",
+        "win": "windows",
+        "WIN": "windows",
+        "오피스": "office",
+        "사무실": "office",
+        "office": "office",
+        "Exc": "office",
+        "워드": "office",
+        "Office": "office",
+        "OFFICE": "office",
+        "엑셀": "office",
+        "파워포인트": "office",
+        "어도비": "adobe",
+        "포토샵": "adobe",
+        "adobe": "adobe",
+        "일러스트": "adobe",
+        "아크로뱃": "adobe",
+        "acrobat": "adobe",
+        "캐드": "cad",
+        "오토캐드": "cad",
+        "cad": "cad",
+        "CAD": "cad",
+        "마야": "cad",
+        "맥스": "cad",
+        "3D맥스": "cad",
+        "백신": "antivirus",
+        "V3": "antivirus",
+        "비트디펜더": "antivirus",
+        "한글": "hangul"
+      };
+      if (content.includes("인증") || content.includes("크랙") || content.includes("시디키") || content.includes("리팩") || content.includes("과자") ) {
+          for (let key in softwareTypes) {
+            if (content.includes(key)) {
+              // @ts-ignore
+              await message.channel.send(`${my_name} 레미쯔 디스코드서버에서는 정품구매 사용을 지향합니다.\n 구매처: ${productLinks[softwareTypes[key]]}`);
+              return;
+            }
+          }
+          if ((content.includes("과자") && content.includes("먹")) ||
+               (content.includes("인증") && content.includes("님"))) {
+            return;
+          }
+          await message.channel.send(`${my_name} 레미쯔 디스코드서버에서는 정품구매 사용을 지향합니다.`);
+          return;
+      }
+      if ((content.includes("디스코드") || content.includes("디코")) &&
+        (content.includes("없어") || content.includes("유지"))) {
+          await message.channel.send(`${my_name} 디스코드는 일종의 실시간 채팅방으로 유지하시며 자료다운, 문의등은 http://remiz.co.kr 를 이용해주시기 바랍니다.`);
+      }
+
+    });
+
 
     this.client.on("warn", (info) => console.log(info));
     this.client.on("error", console.error);

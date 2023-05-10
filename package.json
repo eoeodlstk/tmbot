@@ -1,13 +1,13 @@
 {
-  "name": "evobot",
-  "version": "2.7.0",
+  "name": "trembot",
+  "version": "0.0.1",
   "description": "Discord music bot built with discord.js",
   "main": "index.ts",
   "author": "Erit Islami <eritislami@gmail.com>",
   "private": true,
-  "homepage": "https://github.com/eritislami/evobot",
-  "repository": "github:eritislami/evobot",
-  "bugs": "https://github.com/eritislami/evobot/issues",
+  "homepage": "https://github.com/chulsdlekdk/trembot",
+  "repository": "github:eritislami/trembot",
+  "bugs": "https://github.com/chulsdlekdk/trembot/issues",
   "engines": {
     "node": ">=16.11.0"
   },

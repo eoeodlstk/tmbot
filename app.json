@@ -1,7 +1,7 @@
 {
-  "name": "EvoBot",
+  "name": "trembot",
   "description": "🤖 Discord Music Bot built with discord.js",
-  "repository": "https://github.com/eritislami/evobot",
+  "repository": "https://github.com/chulsdlekdk/trembot",
   "logo": "https://i.imgur.com/JFxgbWH.png",
   "keywords": ["discord", "discordjs", "typescript", "music", "bot"]
 }
