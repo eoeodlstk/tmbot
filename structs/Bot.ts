@@ -43,16 +43,21 @@ export class Bot {
       let test = message.channel.name;
       let test2 = message.channel.id;
       // @ts-ignore
-      let troleadmin = message.member.roles.cache.has('684722393725665392'); // admin role
+      let troleadmin = message.member.roles.cache.has('684722393725665392'); // admin role  684722393725665392
       // @ts-ignore
-      let trolesubscriber = message.member.roles.cache.has('689661924480516251'); // Subscriber role
+      let trolesubscriber = message.member.roles.cache.has('689661924480516251'); // Subscriber role 689661924480516251
       // @ts-ignore
-      let trolesuperior = message.member.roles.cache.has('685336335288107060'); // Superior role
+      let trolesuperior = message.member.roles.cache.has('685336335288107060'); // Superior role   685336335288107060
       // @ts-ignore
       let trolwebadmin = message.member.roles.cache.has('769748429064503296'); // Webadmin role
       // @ts-ignore
-      let trolesbot = message.member.roles.cache.has('684731646288855081'); // bot role
-      if (troleadmin || trolesubscriber || trolesuperior || trolwebadmin || trolesbot) return;
+      let discoadmin = message.member.roles.cache.has('793022913153728522'); // Discoadmin role
+      // @ts-ignore
+      let trolesbot = message.member.roles.cache.has('684731646288855081'); // bot role   1019970602502725732   684731646288855081
+      // @ts-ignore
+      let trolesAdminbot = message.member.roles.cache.has('1019970602502725732'); // botadmn role
+
+      if (troleadmin || trolesubscriber || trolesuperior || trolwebadmin || trolesbot || discoadmin || trolesAdminbot) return;
       if (
           (
                content.includes("어떻게") || content.includes("문의")
@@ -66,8 +71,7 @@ export class Bot {
          || content.includes("하") || content.includes("할")
           )
       ) {
-        console.log(message.channel.id);
-        if (message.channel.id !== "737654030679015476") {
+        if (message.channel.id !== "737654030679015476") {  // 737654030679015476  간단문의 게시판
           await message.channel.send(`${my_name} 이채널은 문의 채널이 아닙니다.\n 문의채널에 다시 남겨주세요\n<#737654030679015476> 또는 http://remiz.co.kr/bbs/board.php?bo_table=qna 에 남겨주시기 바랍니다.`);
         }
       }
@@ -108,6 +112,7 @@ export class Bot {
         "CAD": "cad",
         "마야": "cad",
         "맥스": "cad",
+        "3D": "cad",
         "3D맥스": "cad",
         "백신": "antivirus",
         "V3": "antivirus",

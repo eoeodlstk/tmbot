@@ -17,7 +17,6 @@ WORKDIR /home/trembot
 
 COPY --chown=${USER}:${USER} package*.json ./
 RUN npm install
-VOLUME [ "/home/trembot" ]
 COPY --chown=${USER}:${USER} config.json ./
 COPY --chown=${USER}:${USER}  . .
 
