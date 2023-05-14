@@ -40,17 +40,17 @@ export class Bot {
       // @ts-ignore
       let my_name = message.guild.members.cache.find(member => member.user.username === message.author.username);
       // @ts-ignore
-      let admin_role = message.member.roles.cache.has(config.ADMIN_ROLE); // admin role  684722393725665392
+      let admin_role = message.member.roles.cache.has(config.ADMIN_ROLE); // admin role
       // @ts-ignore
-      let subscriber_role = message.member.roles.cache.has(config.SUBSCRIBER_ROLE); // Subscriber role 689661924480516251
+      let subscriber_role = message.member.roles.cache.has(config.SUBSCRIBER_ROLE); // Subscriber role
       // @ts-ignore
-      let superior_role = message.member.roles.cache.has(config.SUPERIOR_ROLE); // Superior role   685336335288107060
+      let superior_role = message.member.roles.cache.has(config.SUPERIOR_ROLE); // Superior role
       // @ts-ignore
       let web_admin_role = message.member.roles.cache.has(config.WEB_ADMIN_ROLE); // Webadmin role
       // @ts-ignore
       let disco_admin_role = message.member.roles.cache.has(config.DISCO_ADMIN_ROLE); // Discoadmin role
       // @ts-ignore
-      let bot_role = message.member.roles.cache.has(config.BOT_ROLE); // bot role   1019970602502725732   684731646288855081
+      let bot_role = message.member.roles.cache.has(config.BOT_ROLE); // bot role
       // @ts-ignore
       let bot_admin_role = message.member.roles.cache.has(config.BOT_ADMIN_ROLE); // botadmn role
 
@@ -93,7 +93,7 @@ export class Bot {
       }
       if ((content.includes("디스코드") || content.includes("디코")) &&
         (content.includes("없어") || content.includes("유지"))) {
-          await message.channel.send(`${my_name} 디스코드는 일종의 실시간 채팅방으로 유지하시며 자료다운, 문의등은 http://remiz.co.kr 를 이용해주시기 바랍니다.`);
+          await message.channel.send(`${my_name} 디스코드는 일종의 실시간 채팅방으로 유지하시며 자료다운, 문의등은 https://remiz.co.kr 를 이용해주시기 바랍니다.`);
       }
 
     });
