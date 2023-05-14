@@ -40,24 +40,21 @@ export class Bot {
       // @ts-ignore
       let my_name = message.guild.members.cache.find(member => member.user.username === message.author.username);
       // @ts-ignore
-      let test = message.channel.name;
-      let test2 = message.channel.id;
+      let admin_role = message.member.roles.cache.has(config.ADMIN_ROLE); // admin role  684722393725665392
       // @ts-ignore
-      let troleadmin = message.member.roles.cache.has('684722393725665392'); // admin role  684722393725665392
+      let subscriber_role = message.member.roles.cache.has(config.SUBSCRIBER_ROLE); // Subscriber role 689661924480516251
       // @ts-ignore
-      let trolesubscriber = message.member.roles.cache.has('689661924480516251'); // Subscriber role 689661924480516251
+      let superior_role = message.member.roles.cache.has(config.SUPERIOR_ROLE); // Superior role   685336335288107060
       // @ts-ignore
-      let trolesuperior = message.member.roles.cache.has('685336335288107060'); // Superior role   685336335288107060
+      let web_admin_role = message.member.roles.cache.has(config.WEB_ADMIN_ROLE); // Webadmin role
       // @ts-ignore
-      let trolwebadmin = message.member.roles.cache.has('769748429064503296'); // Webadmin role
+      let disco_admin_role = message.member.roles.cache.has(config.DISCO_ADMIN_ROLE); // Discoadmin role
       // @ts-ignore
-      let discoadmin = message.member.roles.cache.has('793022913153728522'); // Discoadmin role
+      let bot_role = message.member.roles.cache.has(config.BOT_ROLE); // bot role   1019970602502725732   684731646288855081
       // @ts-ignore
-      let trolesbot = message.member.roles.cache.has('684731646288855081'); // bot role   1019970602502725732   684731646288855081
-      // @ts-ignore
-      let trolesAdminbot = message.member.roles.cache.has('1019970602502725732'); // botadmn role
+      let bot_admin_role = message.member.roles.cache.has(config.BOT_ADMIN_ROLE); // botadmn role
 
-      if (troleadmin || trolesubscriber || trolesuperior || trolwebadmin || trolesbot || discoadmin || trolesAdminbot) return;
+      if (admin_role || subscriber_role || superior_role || web_admin_role || disco_admin_role || bot_role || bot_admin_role) return;
       if (
           (
                content.includes("어떻게") || content.includes("문의")
@@ -71,54 +68,14 @@ export class Bot {
          || content.includes("하") || content.includes("할")
           )
       ) {
-        if (message.channel.id !== "737654030679015476") {  // 737654030679015476  간단문의 게시판
-          await message.channel.send(`${my_name} 이채널은 문의 채널이 아닙니다.\n 문의채널에 다시 남겨주세요\n<#737654030679015476> 또는 http://remiz.co.kr/bbs/board.php?bo_table=qna 에 남겨주시기 바랍니다.`);
+        if (message.channel.id !== config.QUESTION_CHANNEL) {  // 737654030679015476  간단문의 게시판
+          await message.channel.send(`${my_name} 이채널은 문의 채널이 아닙니다.\n 문의채널에 다시 남겨주세요\n<#${config.QUESTION_CHANNEL}> 또는 https://remiz.co.kr/bbs/board.php?bo_table=qna 에 남겨주시기 바랍니다.`);
         }
       }
 
-      let productLinks = {
-        "windows": "https://www.microsoft.com/ko-kr/windows/get-windows-10",
-        "office": "https://www.microsoft.com/ko-kr/microsoft-365/buy/compare-all-microsoft-365-products",
-        "adobe": "https://www.adobe.com/kr/creativecloud/plans.html",
-        "cad": "https://www.autodesk.co.kr/products",
-        "antivirus": "", // Replace with antivirus product link
-        "hangul": "https://www.hancom.com/goods/goodsList.do?ctgr_seq=31&gnb0=24&gnb1=43"
-      };
+      let productLinks = config.PRODUCT_LINKS;
 
-      let softwareTypes = {
-        "윈도우": "windows",
-        "windows": "windows",
-        "Win": "windows",
-        "win": "windows",
-        "WIN": "windows",
-        "오피스": "office",
-        "사무실": "office",
-        "office": "office",
-        "Exc": "office",
-        "워드": "office",
-        "Office": "office",
-        "OFFICE": "office",
-        "엑셀": "office",
-        "파워포인트": "office",
-        "어도비": "adobe",
-        "포토샵": "adobe",
-        "adobe": "adobe",
-        "일러스트": "adobe",
-        "아크로뱃": "adobe",
-        "acrobat": "adobe",
-        "캐드": "cad",
-        "오토캐드": "cad",
-        "cad": "cad",
-        "CAD": "cad",
-        "마야": "cad",
-        "맥스": "cad",
-        "3D": "cad",
-        "3D맥스": "cad",
-        "백신": "antivirus",
-        "V3": "antivirus",
-        "비트디펜더": "antivirus",
-        "한글": "hangul"
-      };
+      let softwareTypes = config.SOFTWARE_TYPES;
       if (content.includes("인증") || content.includes("크랙") || content.includes("시디키") || content.includes("리팩") || content.includes("과자") ) {
           for (let key in softwareTypes) {
             if (content.includes(key)) {
